@@ -11,24 +11,23 @@
     <div class="pomodoro">
         <div id="timer">00:00</div>
         <button id="start/stop">Iniciar</button>
+        <button id="continuar">continuar</button>
         <label for="tp_foco">
             <p>Digite o tempo de foco:</p>
-            <input class="tempo_de_foco" id="tp_foco" type="number" min="0">
+            <input id="tp_foco" type="number" min="0">
         </label>
         <label for="tp_pausa">
             <p>Digite o tempo de pausa:</p>
-            <input class="tempo_de_pausa" id="tp_pausa" type="number" min="0">
+            <input id="tp_pausa" type="number" min="0">
         </label>
         <label for="tp_pausa_longa">
             <p>Digite o tempo da pausa longa</p>
-            <input class="tempo_da_pausa_longa" id="tp_pausa_longa" type="number" min="0">
+            <input id="tp_pausa_longa" type="number" min="0">
         </label>
-    </div>
-    <div class="t2">
-        <button id="in">aa</button>
-        <input type="number" value="1" id="fc">
-        <input type="number" value="1" id="pc">
-        <input type="number" value="1" id="pl">
+        <label for="focos_ate_pausa_longa">
+            <p>Digite o numero de focos até a pausa longa</p>
+            <input id="focos_ate_pausa_longa" type="number" min="1">
+        </label>
     </div>
 </body>
 </html>
