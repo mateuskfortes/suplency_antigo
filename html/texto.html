@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor de Texto</title>
+<style>
+    #editor {
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 300px;
+        min-height: 200px;
+        font-family: Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+
+<div id="editor" contenteditable="true">
+    Escreva aqui...
+</div>
+<br>
+
+<label for="tamanho">Tamanho:</label>
+<select id="tamanho" onchange="alterarEstilo('fontSize', this.value)">
+    <option value="1">12px</option>
+    <option value="2">14px</option>
+    <option value="3">16px</option>
+</select>
+
+<label for="cor">Cor:</label>
+<input type="color" id="cor" onchange="alterarEstilo('foreColor', this.value)">
+
+<label for="fonte">Fonte:</label>
+<select id="fonte" onchange="alterarEstilo('fontName', this.value)">
+    <option value="Arial, sans-serif">Arial</option>
+    <option value="Verdana, sans-serif">Verdana</option>
+    <option value="Tahoma, sans-serif">Tahoma</option>
+</select>
+
+<button onclick="toggleEstilo('bold')">Negrito</button>
+<button onclick="toggleEstilo('italic')">Itálico</button>
+<button onclick="toggleEstilo('underline')">Sublinhado</button>
+<button onclick="alterarEstilo('justifyLeft')">Alinhar à Esquerda</button>
+<button onclick="alterarEstilo('justifyCenter')">Centralizar</button>
+<button onclick="alterarEstilo('justifyRight')">Alinhar à Direita</button>
+<button onclick="alterarEstilo('justifyFull')">Justificado</button>
+<select id="tipoTopico">
+    <option value="none">nenhum</option>
+    <option value="decimal">Decimal</option>
+    <option value="lower-alpha">Letra Minúscula</option>
+    <option value="lower-roman">Romano Minúsculo</option>
+    <option value="upper-alpha">Letra Maiúscula</option>
+    <option value="upper-roman">Romano Maiúsculo</option>
+</select>
+
+<script>
+    function alterarEstilo(propriedade, valor) {
+        document.execCommand('styleWithCSS', false, true);
+        document.execCommand(propriedade, false, valor);
+    }
+
+    function toggleEstilo(estilo) {
+        document.execCommand(estilo);
+    }
+
+    const editor = document.getElementById('editor');
+    const tipoTopico = document.getElementById('tipoTopico');
+
+    tipoTopico.addEventListener('change', function() {
+        const key = event.key;
+        document.execCommand('insertOrderedList', false, tipoTopico.value);
+        
+    });
+</script>
+
+</body>
+</html>
