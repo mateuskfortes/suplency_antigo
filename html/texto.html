@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +8,28 @@
     #editor {
         border: 1px solid #ccc;
         padding: 10px;
-        width: 300px;
-        min-height: 200px;
+        width: 95vw;
+        min-height: 80vh;
         font-family: Arial, sans-serif;
     }
+    
 </style>
 </head>
 <body>
 
 <div id="editor" contenteditable="true">
-    Escreva aqui...
+    <p>aaa</p>
+    
 </div>
-<br>
-
 <label for="tamanho">Tamanho:</label>
 <select id="tamanho" onchange="alterarEstilo('fontSize', this.value)">
-    <option value="1">12px</option>
-    <option value="2">14px</option>
-    <option value="3">16px</option>
+    <option value="1">8px</option>
+    <option value="2">10px</option>
+    <option value="3">12px</option>
+    <option value="4">14px</option>
+    <option value="5">16px</option>
+    <option value="6">18px</option>
+    <option value="7">20px</option>
 </select>
 
 <label for="cor">Cor:</label>
@@ -38,9 +42,9 @@
     <option value="Tahoma, sans-serif">Tahoma</option>
 </select>
 
-<button onclick="toggleEstilo('bold')">Negrito</button>
-<button onclick="toggleEstilo('italic')">Itálico</button>
-<button onclick="toggleEstilo('underline')">Sublinhado</button>
+<button onclick="alterarDecoracao('bold')">Negrito</button>
+<button onclick="alterarDecoracao('italic')">Itálico</button>
+<button onclick="alterarDecoracao('underline')">Sublinhado</button>
 <button onclick="alterarEstilo('justifyLeft')">Alinhar à Esquerda</button>
 <button onclick="alterarEstilo('justifyCenter')">Centralizar</button>
 <button onclick="alterarEstilo('justifyRight')">Alinhar à Direita</button>
@@ -53,25 +57,19 @@
     <option value="upper-alpha">Letra Maiúscula</option>
     <option value="upper-roman">Romano Maiúsculo</option>
 </select>
+<br>
 
 <script>
     function alterarEstilo(propriedade, valor) {
         document.execCommand('styleWithCSS', false, true);
         document.execCommand(propriedade, false, valor);
+        editor.focus();
     }
 
-    function toggleEstilo(estilo) {
+    function alterarDecoracao(estilo) {
         document.execCommand(estilo);
+        editor.focus();
     }
-
-    const editor = document.getElementById('editor');
-    const tipoTopico = document.getElementById('tipoTopico');
-
-    tipoTopico.addEventListener('change', function() {
-        const key = event.key;
-        document.execCommand('insertOrderedList', false, tipoTopico.value);
-        
-    });
 </script>
 
 </body>
