@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor de Texto</title>
+<style>
+    #editor {
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 95vw;
+        min-height: 80vh;
+        font-family: Arial, sans-serif;
+    }
+    
+</style>
+</head>
+<body>
+
+<div id="editor" contenteditable="true">
+    <p>aaa</p>
+    
+</div>
+<label for="tamanho">Tamanho:</label>
+<select id="tamanho" onchange="alterarEstilo('fontSize', this.value)">
+    <option value="1">8px</option>
+    <option value="2">10px</option>
+    <option value="3">12px</option>
+    <option value="4">14px</option>
+    <option value="5">16px</option>
+    <option value="6">18px</option>
+    <option value="7">20px</option>
+</select>
+
+<label for="cor">Cor:</label>
+<input type="color" id="cor" onchange="alterarEstilo('foreColor', this.value)">
+
+<label for="fonte">Fonte:</label>
+<select id="fonte" onchange="alterarEstilo('fontName', this.value)">
+    <option value="Arial, sans-serif">Arial</option>
+    <option value="Verdana, sans-serif">Verdana</option>
+    <option value="Tahoma, sans-serif">Tahoma</option>
+</select>
+
+<button onclick="alterarDecoracao('bold')">Negrito</button>
+<button onclick="alterarDecoracao('italic')">Itálico</button>
+<button onclick="alterarDecoracao('underline')">Sublinhado</button>
+<button onclick="alterarEstilo('justifyLeft')">Alinhar à Esquerda</button>
+<button onclick="alterarEstilo('justifyCenter')">Centralizar</button>
+<button onclick="alterarEstilo('justifyRight')">Alinhar à Direita</button>
+<button onclick="alterarEstilo('justifyFull')">Justificado</button>
+<select id="tipoTopico">
+    <option value="none">nenhum</option>
+    <option value="decimal">Decimal</option>
+    <option value="lower-alpha">Letra Minúscula</option>
+    <option value="lower-roman">Romano Minúsculo</option>
+    <option value="upper-alpha">Letra Maiúscula</option>
+    <option value="upper-roman">Romano Maiúsculo</option>
+</select>
+<br>
+
+<script>
+    function alterarEstilo(propriedade, valor) {
+        document.execCommand('styleWithCSS', false, true);
+        document.execCommand(propriedade, false, valor);
+        editor.focus();
+    }
+
+    function alterarDecoracao(estilo) {
+        document.execCommand(estilo);
+        editor.focus();
+    }
+</script>
+
+</body>
+</html>
