@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloco de Notas com Estilos</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .bloco-de-notas {
+        border: 1px solid #ccc;
+        margin: 1rem;
+        padding: 10px;
+        width: 300px;
+        min-height: 200px;
+    }
+</style>
+</head>
+<body>
+
+<div id="blocoDeNotas" class="bloco-de-notas" contenteditable="true">
+    <!--<span style='color: red; font-size: 19; font-family: arial;'>ss</span>ddd<span style='color: blue; font-size: 18; font-family: verdana;'>-->
+    <p>t</p>
+</div>
+<br>
+<label for="fonte">Fonte:</label>
+<select id="fonte" onchange="alterarEstilo('font-family', this.value)">
+    <option value="Arial">Arial</option>
+    <option value="Verdana">Verdana</option>
+    <option value="Tahoma">Tahoma</option>
+</select>
+
+<label for="cor">Cor:</label>
+<input type="color" id="cor" onchange="alterarEstilo('color', this.value)">
+
+<label for="tamanho">Tamanho:</label>
+<select id="tamanho" onchange="alterarEstilo('font-size', this.value)">
+    <option value="12px">12px</option>
+    <option value="14px">14px</option>
+    <option value="16px">16px</option>
+</select>
+
+<button id="sublinhado" onclick="verificar_modificacoes_ativas()">Sublinhado</button>
+
+<button id="negrito" onclick="">Negrito</button>
+
+<button id="italico" onclick="">Itálico</button>
+
+<script>
+    const bloco_de_anotacoes = document.getElementById('blocoDeNotas');
+    var fontes = ['arial', 'verdana','black', 'tahoma']
+    var modificacoes_possiveis_no_texto = ['u', 'strong', 'em', 'span']
+    var sublinhado_negrito_italico_span = [false, false, false, false]
+    var tamanho = 12
+    var fonte = 'arial'
+    var cor = 'black'
+    var conteudo = ''
+    var texto_selecionado = ''
+
+    
+    
+    
+    
+    /*
+    const bloco_de_anotacoes = document.getElementById('blocoDeNotas');
+    var fontes = ['arial', 'verdana','black', 'tahoma']
+    var modificacoes_possiveis_no_texto = ['u', 'strong', 'em', 'span']
+    var sublinhado_negrito_italico_span = [false, false, false, false]
+    var tamanho = 12
+    var fonte = 'arial'
+    var cor = 'black'
+    var conteudo = ''
+    var texto_selecionado = ''
+      
+    function verificar_modificacoes_ativas(posicao_do_cursor) {
+        conteudo = bloco_de_anotacoes.innerHTML
+        posicao_do_cursor = posicao_do_cursor || conteudo.length
+        let texto = conteudo.substring(0, posicao_do_cursor)
+        let parte_do_span = ''
+        modificacoes_possiveis_no_texto.forEach((modificacao, i) => {
+            if (texto.lastIndexOf(`<${modificacao}`) > texto.lastIndexOf(`</${modificacao}>`)) sublinhado_negrito_italico[i] = true
+            console.log(texto.lastIndexOf(`<${modificacao}`), texto.lastIndexOf(`</${modificacao}>`))
+        })
+        console.log(texto)  
+        if (sublinhado_negrito_italico_span[3]) {
+            parte_do_span = texto.substring(texto.lastIndexOf('<span'))
+            cor = parte_do_span.substring(parte_do_span.indexOf('color: ') + 7, parte_do_span.indexOf(';'))
+            parte_do_span = parte_do_span.substring(parte_do_span.indexOf(';') + 1)
+            tamanho = parte_do_span.substring(parte_do_span.indexOf('font-size: ') + 11, parte_do_span.indexOf(';'))
+            parte_do_span = parte_do_span.substring(parte_do_span.indexOf(';') + 1)
+            fonte = parte_do_span.substring(parte_do_span.indexOf('font-family: ') + 13, parte_do_span.indexOf(';'))
+            console.log(cor, tamanho, fonte)
+        }
+    }
+    
+    function alterarEstilo(propriedade, valor) {
+        textoSelecionado = window.getSelection().toString();
+
+        if (formatacaoAtiva) {
+            blocoDeNotas.innerHTML = blocoDeNotas.innerHTML.replace('</span>', '');
+            formatacaoAtiva = false;
+        }
+
+        if (textoSelecionado !== '') {
+            const novoConteudo = `<span style="${propriedade}:${valor};">${textoSelecionado}</span>`;
+            document.execCommand('insertHTML', false, novoConteudo);
+            formatacaoAtiva = true;
+        }
+    }*/
+</script>
+
+</body>
+</html>

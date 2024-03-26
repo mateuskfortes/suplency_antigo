@@ -1,3 +1,5 @@
+/* Método pomodoro ---------------------------*/
+
 const start = document.getElementById('start/stop')
 const continuar = document.getElementById('continuar')
 const contador = document.getElementById('timer')
@@ -63,3 +65,10 @@ function parar_timer() {
     tempo = 0
     mostrar_timer()
 }
+
+/* Bloco de anotações ------------------*/
+
+
+
+
+/*--------------------------------------*/
