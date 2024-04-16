@@ -12,15 +12,17 @@
         min-height: 80vh;
         font-family: Arial, sans-serif;
     }
-    
+    .ativo {
+        background-color: red;
+    }
 </style>
 </head>
 <body>
 
 <div id="editor" contenteditable="true">
     <p>aaa</p>
-    
 </div>
+
 <label for="tamanho">Tamanho:</label>
 <select id="tamanho" onchange="alterarEstilo('fontSize', this.value)">
     <option value="1">8px</option>
@@ -42,24 +44,28 @@
     <option value="Tahoma, sans-serif">Tahoma</option>
 </select>
 
-<button onclick="alterarDecoracao('bold')">Negrito</button>
-<button onclick="alterarDecoracao('italic')">Itálico</button>
-<button onclick="alterarDecoracao('underline')">Sublinhado</button>
-<button onclick="alterarEstilo('justifyLeft')">Alinhar à Esquerda</button>
-<button onclick="alterarEstilo('justifyCenter')">Centralizar</button>
-<button onclick="alterarEstilo('justifyRight')">Alinhar à Direita</button>
-<button onclick="alterarEstilo('justifyFull')">Justificado</button>
-<select id="tipoTopico">
-    <option value="none">nenhum</option>
-    <option value="decimal">Decimal</option>
-    <option value="lower-alpha">Letra Minúscula</option>
-    <option value="lower-roman">Romano Minúsculo</option>
-    <option value="upper-alpha">Letra Maiúscula</option>
-    <option value="upper-roman">Romano Maiúsculo</option>
+<button id="botaoNegrito" onclick="alterarDecoracao('bold')" estilo="bold">Negrito</button>
+<button id="botaoItalico" onclick="alterarDecoracao('italic')" estilo="italic">Itálico</button>
+<button id="botaoSublinhado" onclick="alterarDecoracao('underline')" estilo="underline">Sublinhado</button>
+
+<label for="alinhamento">Alinhamento:</label>
+<select id="alinhamento" onchange="alterarAlinhamento(this.value)">
+    <option value="justifyLeft">À Esquerda</option>
+    <option value="justifyCenter">Centralizado</option>
+    <option value="justifyRight">À Direita</option>
+    <option value="justifyFull">Justificado</option>
 </select>
-<br>
 
 <script>
+    const editor = document.getElementById('editor');
+    const botaoNegrito = document.getElementById('botaoNegrito');
+    const botaoItalico = document.getElementById('botaoItalico');
+    const botaoSublinhado = document.getElementById('botaoSublinhado');
+    const seletorTamanho = document.getElementById('tamanho');
+    const seletorCor = document.getElementById('cor');
+    const seletorFonte = document.getElementById('fonte');
+    const seletorAlinhamento = document.getElementById('alinhamento');
+
     function alterarEstilo(propriedade, valor) {
         document.execCommand('styleWithCSS', false, true);
         document.execCommand(propriedade, false, valor);
@@ -68,8 +74,43 @@
 
     function alterarDecoracao(estilo) {
         document.execCommand(estilo);
+        const botao = document.querySelector(`button[estilo="${estilo}"]`);
+        botao.classList.toggle('ativo');
         editor.focus();
     }
+
+    function alterarAlinhamento(alinhamento) {
+        document.execCommand(alinhamento)
+        editor.focus()
+    }
+
+    function atualizarBotoes() {
+        if (document.queryCommandState('bold')) botaoNegrito.classList.add('ativo');
+        else botaoNegrito.classList.remove('ativo');
+
+        if (document.queryCommandState('italic')) botaoItalico.classList.add('ativo');
+        else botaoItalico.classList.remove('ativo');
+        
+        if (document.queryCommandState('underline')) botaoSublinhado.classList.add('ativo');
+        else botaoSublinhado.classList.remove('ativo');
+
+        const tamanho = document.queryCommandValue('fontSize');
+        const cor = document.queryCommandValue('foreColor');
+        const fonte = document.queryCommandValue('fontFamily');
+        const alinhamento = document.queryCommandValue('justify');
+        console.log(tamanho, cor, fonte, alinhamento)
+        
+        seletorTamanho.value = tamanho
+        seletorCor.value = cor
+        seletorFonte.value = fonte
+        seletorAlinhamento.value = alinhamento
+    }
+
+    editor.addEventListener('click', atualizarBotoes);
+    document.addEventListener('keydown', () => {
+        if (event.key.startsWith('Arrow')) atualizarBotoes(); 
+    });
+
 </script>
 
 </body>
