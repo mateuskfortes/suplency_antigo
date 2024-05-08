@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="nav">
+      <h1>SUPLENCY</h1>
+      <div class="Criar">
+        <button onclick="create()">Criar novo</button>
+        <button onclick="removeAll()">Excluir todos</button>
+        <button onclick="play()">Play</button>
+      </div>
+    </div>
+
+    <div class="card-form">
+      <div class="card-form-box">
+        <h2>Flashcard novo</h2>
+        <input type="text" id="question" placeholder="Pergunta..." />
+        <input type="text" id="answer" placeholder="Resposta..." />
+        <div class="btns">
+          <button onclick="save()">Salvar</button>
+          <button onclick="cancel()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcards"></div>
+    <script src="script.js"></script>
+    
+  </body>
+</html>
