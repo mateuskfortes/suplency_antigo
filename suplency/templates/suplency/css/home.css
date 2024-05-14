@@ -8,28 +8,32 @@
 header {
     display: flex;
 }
-.menu {
-
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 50px;
-
-    position: absolute;
-    width: 440px;
-    height: 36px;
-    left: 541px;
-    top: 31px;
 
 
-}
+
 .menu > ul {
     display: flex;
+    /* menu */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 8px;
+gap: 50px;
+
+position: absolute;
+width: 440px;
+height: 36px;
+left: 451px;
+top: 31px;
+
+
+
 }
 .menu > ul > li {
     list-style: none;
-    margin:1rem;
+    margin: 0.227%; /* 1rem / altura do contêiner pai */
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
@@ -55,13 +59,13 @@ button {
 }
 
 #botao_suplency {
-    /* Suplency */
+/* Suplency */
 
 position: absolute;
 width: 206px;
 height: 40px;
-left: 91px;
-top: 31px;
+left: 60px;
+top: 29px;
 
 font-family: 'Dream Glory';
 font-style: normal;
@@ -72,40 +76,51 @@ line-height: 50px;
 color: #000000;
 
 
+
 }
 
 #suplency_titulo_gradiente {
     /* Title */
 
-position: absolute;
-width: 373px;
-height: 88px;
-left: 71px;
-top: 233px;
+    width: 19.5%; /* 373px / largura do contêiner pai */
+    height: 88px;
+    left: 42px;
+    top: 243px;
 
-font-family: 'Times New Roman';
-font-style: normal;
-font-weight: 700;
-font-size: 80px;
-line-height: 110%;
-/* identical to box height, or 88px */
-text-align: center;
 
-background: linear-gradient(244.91deg, #0A9A5A 15.94%, #0BCB9C 50%, #1E82FF 84.06%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+    position: absolute;
+
+
+    font-family: 'Times New Roman';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 110%;
+    /* identical to box height, or 88px */
+    text-align: center;
+
+    background: linear-gradient(244.91deg, #0A9A5A 15.94%, #0BCB9C 50%, #1E82FF 84.06%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+
+
+
 
 }
 
 #studyplataform_titulo {
     /* Study Plataform */
 
+
+    position: absolute;
+    width: 540px;
+    height: 61px;
+    left: 60px;
+    top: 321px;
+
 position: absolute;
-width: 540px;
-height: 61px;
-left: 102px;
-top: 321px;
 
 font-family: 'Poppins';
 font-style: normal;
@@ -118,6 +133,12 @@ letter-spacing: -0.03em;
 color: #000000;
 
 
+
+
+
+
+
+
 }
 
 .botão_branco {
@@ -127,33 +148,29 @@ color: #000000;
 }
 
 #botao_cadastre-se {
-    position: absolute;
-
-left: 1264px;
-top: 31px;
-font-family:'poppins';
-font-style: normal;
-font-weight: 700;
-font-size: 14px;
-line-height: 158.7%;
-
-/* or 22px */
-
-text-align: right;
-letter-spacing: -0.03em;
-color: #000000;
-
-
-box-sizing: border-box;
-display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 9px 18px;
-gap: 10px;
-border: 3px solid #000000;
-border-radius: 40px;
-
-
-}
+    
+        position: absolute;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 158.7%;
+        letter-spacing: -0.03em;
+        color: #000000;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: center; /* Alinhar o texto verticalmente ao centro */
+        padding: 9px 18px;
+        gap: 10px;
+        border: 3px solid #000000;
+        border-radius: 40px;
+        height: 40px;
+        width: 105px;
+        left: 1039px;
+        top: 31px;
+        white-space: nowrap; /* Impede a quebra de linha */
+    }
+    
 
 
