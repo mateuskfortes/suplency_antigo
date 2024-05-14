@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +8,12 @@
     <title>log-in</title>
 </head>
 <body>
-    <section id="login">
+    <section class="login">
         <form method='POST' class="login">
             <input type="email" id="email" placeholder="E-mail ou usuário">
             <input type="text" id="senha" placeholder="Senha">
             <button type='submit' id="entrar">Sign-in</button>
-            <a href="#">Não tem uma conta? Crie Aqui!</a>
+            <a href="{% url "singin"%}">Não tem uma conta? Crie Aqui!</a>
             
         </form>
     </section>
