@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
     <script src="#" defer async></script>
     <title>sing-in</title>
 </head>
@@ -15,7 +16,7 @@
             <input type="text" id="senha" placeholder="Senha">
             <input type="text" id="confirmar" placeholder="Confirmar Senha">
             <button type='submit' id="entrar">Sign-in</button>
-            <a href="{% url "login" %}">Já tem uma conta? Crie Aqui!</a>
+            <a  href="{% url "login" %}">Já tem uma conta? Crie Aqui!</a>
         </form>
     </section>
 </body>

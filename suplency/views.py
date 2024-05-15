@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 def Home(request):
+    print('tipo: ', type(request))
     return render(request, 'suplency/home.html')
 
 def estudo(request):
