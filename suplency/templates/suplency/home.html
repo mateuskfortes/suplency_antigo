@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../css/home.css">
     <link rel="stylesheet" href="{% static 'css/home.css'%}">
-    <script defer async src="js/home.js"></script>
     <title>suplency</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et itaque nobis necessitatibus mollitia ea nemo commodi. Dignissimos, odit vitae, ut ex in minus magni et perferendis, minima molestiae repudiandae.</p>
             <div id="botoes_titulo">
                 <button class="botão_preto"  onclick="window.location.href='{% url "estudo"%}'"><a >Comece Agora!</a></button>
-                <button class="botão_branco" ><p>Login</p></button>
+                <button class="botão_branco" onclick="window.location.href='{% url "login"%}'"><p>Login</p></button>
             </div>
 
         </div>
