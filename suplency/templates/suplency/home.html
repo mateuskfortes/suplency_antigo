@@ -4,24 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/home.css">
+    <link rel="stylesheet" href="../../../static/css/home.css">
     <link rel="stylesheet" href="{% static 'css/home.css'%}">
     <title>suplency</title>
 </head>
 <body>
+
+
+
     <header>
-        <button id="botao_suplency"><p>Suplency</p></button>
-        <nav class="menu">
-            <ul>
-                <li>Suporte</li>
-                <li>Como usar?</li>
-                <li>Quem somos?</li>
-                <li onclick="window.location.href='{% url "login"%}'">Login</li>
-            </ul>
-        </nav>
-            </div>
-        <button class="botão_branco" id="botao_cadastre-se" onclick="window.location.href='{% url "singin"%}'"><P>Cadastre-se</P></button>
+
+        <div class="interface">
+
+            <div class="logo">
+                <a href="#">
+                    <img src="" alt=""> <!--Colocar imagem da logo-->
+                </a>
+            </div> <!--Logo-->
+
+            <nav class="menu_desktop">
+
+                <ul>
+                    <li>Suporte</li>
+                    <li>Como usar?</li>
+                    <li>Quem somos?</li>
+                    <li onclick="window.location.href='{% url "login"%}'">Login</li>
+                </ul>
+
+            </nav> <!--Menu desktop-->
+
+
+            <div class="botao_cadastro">
+
+                <a onclick="window.location.href='{% url "singin"%}'"> Cadastre-se </a>
+               
+            </div> <!--Botão Cadastre-se-->
+
+        </div> <!--Interface-->
+
+       
+        
+    
+       
+
+
     </header>
+
+
+
+
+
     <main>
         <div id="titulo">
             <h1 id="suplency_titulo_gradiente">Suplency</h1>
