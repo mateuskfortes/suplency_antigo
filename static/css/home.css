@@ -1,42 +1,92 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
-/* ESTILO GERAL (FIGMA HOMEPAGE.PT1) */
+/*ESTILO GERAL (DIVISAO FIGMA HOMEPAGE.PT1) */
 
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background-color: white;
+
+    background: #FFFFFF;
     height: 100vh;
 }
 
-.interface {
+
+.interface{
     max-width: 1280px;
     margin: 0 auto;
 }
 
+
+/* ESTILO HEADER */
+
 header {
-    padding: 40px 4%;
+
+padding: 8px 2%;
+
 }
 
-header > .interface { 
+header a{
+    color: black;
+    text-decoration: none;
+
+    
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 143.7%;
+
+    letter-spacing: -0.04em;
+
+    color: #000000;
+
+
+}
+header > .interface {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-/* por que nao pode ser diretamente no header? */
 
-
-
-/* ESTILIZAÇÃO MENU (FIGMA HOMEPAGE.PT1) */
-
-header {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
+header nav ul {
+    list-style-type: none;
 }
 
+header nav ul li {
+    display: inline-block;
+    padding: 0 40px;
+    cursor:pointer;
 
+    
+}
+
+header .botao_cadastro a{
+    padding: 10px 40px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor:pointer;
+    border: 2px solid #000000;
+    border-radius: 40px;
+    
+
+}
+
+header .botao_cadastro a{
+
+
+    font-family: "Source Sans 3", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 158.7%;
+    /* or 22px */
+    text-align: right;
+    letter-spacing: -0.03em;
+    
+}
