@@ -4,33 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/estudo.css">
-    <link rel="stylesheet" href="{% static 'css/estudo.css'%}">
-    <script defer async src="{% static "js/estudo.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/flash_cards.css'%}">
+    <link rel="stylesheet" href="{% static 'css/pomodoro.css'%}">
+
+    <script defer async src="{% static "js/pomodoro.js" %}"></script>
+    <script defer async src="{% static "js/flash_cards.js" %}"></script>
+    <script defer async src="{% static "js/caderno.js" %}"></script>
+
     <title>estudando...</title>
 </head>
 <body>
     <!-- Método pomodoro -->
+
     <div class="pomodoro">
         <div id="timer">00:00</div>
         <button id="start/stop">Iniciar</button>
         <button id="continuar">continuar</button>
         <label for="tp_foco">
             <p>Digite o tempo de foco:</p>
-            <input id="tp_foco" type="number" min="0">
+            <input id="tp_foco" type="number" min="0" default="0">
         </label>
         <label for="tp_pausa">
             <p>Digite o tempo de pausa:</p>
-            <input id="tp_pausa" type="number" min="0">
+            <input id="tp_pausa" type="number" min="0" default="0">
         </label>
         <label for="tp_pausa_longa">
             <p>Digite o tempo da pausa longa</p>
-            <input id="tp_pausa_longa" type="number" min="0">
+            <input id="tp_pausa_longa" type="number" min="0" default="0">
         </label>
         <label for="focos_ate_pausa_longa">
             <p>Digite o numero de focos até a pausa longa</p>
-            <input id="focos_ate_pausa_longa" type="number" min="1">
+            <input id="focos_ate_pausa_longa" type="number" min="1" default="1">
         </label>
     </div>
+
+    <!-- Flash cards -->
+
+    <div class="nav">
+        <h1>SUPLENCY</h1>
+        <div class="Criar">
+            <button onclick="create()">Criar novo</button>
+            <button onclick="removeAll()">Excluir todos</button>
+            <button onclick="play()">Play</button>
+        </div>
+    </div>
+  
+    <div class="card-form">
+        <div class="card-form-box">
+            <h2>Flashcard novo</h2>
+            <input type="text" id="question" placeholder="Pergunta..." />
+            <input type="text" id="answer" placeholder="Resposta..." />
+            <div class="btns">
+                <button onclick="save()">Salvar</button>
+                <button onclick="cancel()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+  
+    <div class="flashcards"></div>
+      
+    <!-- Bloco de notas -->
+
+    <div id="texto"></div>
+    <button id="proxima_pagina">proxima pagina</button>
+
+    <a href="{% url "logout" %}">logout</a>
 </body>
 </html>
