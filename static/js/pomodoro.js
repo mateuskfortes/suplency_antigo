@@ -11,7 +11,7 @@ const input_ate_pl = document.getElementById('focos_ate_pausa_longa')
 let tempo_total_foco = 0
 let tempo_total_pausa = 0
 let tempo_total_pausa_longa = 0
-let ate_pl = input_ate_pl.value * 2
+let ate_pl = 1
 let ligado = false
 let timer = 0
 let tempo = 0
@@ -26,7 +26,7 @@ start.addEventListener('click', () => {
     else parar_timer()
 })
 
-input_foco.addEventListener('change', () => {
+input_foco.addEventListener('input', () => {
     tempo = input_foco.value * 60
     mostrar_timer()
 })
@@ -36,7 +36,7 @@ async function pomodoro() {
     while (ligado) {
         for (i = 0; i < ate_pl; i++) {
             if (i % 2 == 0) tempo = tempo_total_foco
-            else if (i % 2 != 0 && i != ate_pl - 1) tempo = tempo_total_pausa
+            else if (i != ate_pl - 1) tempo = tempo_total_pausa
             else tempo = tempo_total_pausa_longa
             await new Promise(resolve => timer = setInterval(() => {
                 tempo--
@@ -65,10 +65,3 @@ function parar_timer() {
     tempo = 0
     mostrar_timer()
 }
-
-/* Bloco de anotações ------------------*/
-
-
-
-
-/*--------------------------------------*/

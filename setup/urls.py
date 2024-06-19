@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from suplency.views import HomeView, estudoView, loginView, singinView, carregarPagina, logoutView
+from suplency.views import HomeView, estudoView, loginView, singinView, carregarPagina, logoutView, sendEmail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/', logoutView, name='logout'),
     path('login/', loginView, name='login'),
     path('singin/', singinView, name='singin'),
+    path('email/', sendEmail),
     path('caderno/<str:materia>/<int:pagina>', carregarPagina),
 ]

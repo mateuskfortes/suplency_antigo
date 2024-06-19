@@ -3,7 +3,6 @@ var email = document.getElementById('email')
 var senha = document.getElementById('senha')
 var confirmacao_senha = document.getElementById('confirmar')
 var botao_entrar = document.getElementById('entrar')
-var inputs = document.querySelectorAll('#formulario input')
 
 function validarFormulario() {
     var submit = true
@@ -43,7 +42,6 @@ function validarFormulario() {
     }
 }   
 
-
-inputs.forEach((input) => {
-    input.addEventListener('input', validarFormulario)
+nome.addEventListener('input', () => {
+    
 })

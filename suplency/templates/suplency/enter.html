@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../static/css/login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+
+    <script defer async src="{% static 'js/singin.js' %}"></script>
+    <title>sing-in</title>
+</head>
+<body>
+    <section id="login">
+        <form method="POST", class="login", id="formulario">
+            {% csrf_token %}
+            {% for field in form %}
+                {{field.label_tag}} 
+                {{field}} 
+                {{field.errors}}
+            {% endfor %}
+            <input class="submit" type="submit" value="Sing-in">
+            <a href="{{link}}">{{link_text}}</a>
+        </form>
+        <!--
+            <form method='POST' class="login" id="formulario">
+                {% csrf_token %}
+                <input type="text" id="nome" name="nome" placeholder="Usuário" class="input">
+                <input type="email" id="email" name="email" placeholder="E-mail" class="input">
+                <input type="password" id="senha" name="senha" placeholder="Senha" class="input">
+                <input type="password" id="confirmar" placeholder="Confirmar Senha" class="input">
+                <button type="submit" id="entrar"  class="botao_submit disabled">Sign-in</button>
+                <a href="{% url "login" %}">Já tem uma conta? Crie Aqui!</a>
+            </form>
+        -->
+    </section>
+</body>
+</html>

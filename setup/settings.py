@@ -1,10 +1,10 @@
+import os
 from pathlib import Path
+from decouple import config, Csv
+from dj_database_url import parse as db_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-from decouple import config, Csv
-from dj_database_url import parse as db_url
 
 SECRET_KEY = config('SECRET_KEY')
 
@@ -52,6 +52,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'suplency.backends.EmailBackend',
 ]
 
 
@@ -102,7 +106,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-import os
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -115,3 +118,14 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL= 'mateusfortes10@gmail.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS=config('EMAIL_USE_TLS')
+EMAIL_PORT=config('EMAIL_PORT')
+EMAIL_HOST=config('EMAIL_HOST')
