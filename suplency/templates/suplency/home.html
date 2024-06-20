@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-{% load static %}
+<span class="django">
+    {% load static %}
+</span>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../static/css/home.css">
     <link rel="stylesheet" href="{% static "css/home.css"%}">
-    <!--
-
+    
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap'">
-    -->
+    
     <title>suplency</title>
 </head>
 <body>
 
 
-
+<section class="cima">
     <header>
-
         <div class="interface">
 
             <div class="logo">
@@ -28,70 +28,40 @@
             </div> <!--Logo-->
 
             <nav class="menu_desktop">
-
                 <ul>
                     <li><a>Suporte</a></li>
                     <li><a>Como usar?</a></li>
                     <li><a>Quem somos?</a></li>
                     <li onclick="window.location.href='{% url "login"%}'"><a>Login</a></li>
                 </ul>
-
             </nav> <!--Menu desktop-->
-
-
-            <div class="botao_cadastro">
-
-                <a href="{% url "singin"%}"> Cadastre-se </a>
-               
-            </div> <!--Botão Cadastre-se-->
-
+            <span class="espaco_cadastro">
+                <label for="link_cadastro" class="botao botao_cadastro">
+                    <a href="{% url "singin"%}" name="link_cadastro"> Cadastre-se </a>
+                </label> <!--Botão Cadastre-se-->
+            </span>
         </div> <!--Interface-->
-
-       
-        
-    
-       
-
-
     </header>
 
-
-
-
-
     <main>
-        <div id="titulo">
-            <h1 id="suplency_titulo_gradiente">Suplency</h1>
-            <h2 id="studyplataform_titulo">Study Plataform</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et itaque nobis necessitatibus mollitia ea nemo commodi. Dignissimos, odit vitae, ut ex in minus magni et perferendis, minima molestiae repudiandae.</p>
-            <div id="botoes_titulo">
-                <button class="botão_preto"  onclick="window.location.href='{% url "estudo"%}'"><a >Comece Agora!</a></button>
-                <button class="botão_branco" onclick="window.location.href='{% url "login"%}'"><p>Login</p></button>
+        <section class="titulo">
+            <h1 class="suplency_titulo_gradiente">Suplency</h1>
+            <h2 class="studyplataform_titulo">Study Plataform</h2>
+            <p class="texto_introducao">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et itaque nobis necessitatibus mollitia ea nemo commodi. Dignissimos, odit vitae, ut ex in minus magni et perferendis, minima molestiae repudiandae.</p>
+            <div class="botoes_titulo">
+                <label for="link_estudos" class="botao botao_preto">
+                    <a href="{% url "estudo"%}" name="link_estudos">Comece Agora!</a>
+                </label>
+                <label for="link_login" class="botao botao_branco">
+                    <a name="link_login" href="{% url "login"%}">Login</a>
+                </label>
             </div>
-
-            
-        </div><!--tamanho da interface-->
-
-
-
-
-
-
-
-
-
+        </section>
         
-    </header>
-
-
-    <main>
-
-
-
-
-
+        <section class="desenho">
+            <img src="https://img.quizur.com/f/img6498f403f05e04.20215837.jpg?lastEdited=1687745551" alt="">
+        </section>
     </main>
-
-
+</section>
 </body>
 </html>
