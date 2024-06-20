@@ -109,13 +109,24 @@ main {
 
 .titulo {
     margin: auto 0;
-    padding: 0 5vw;
-    width: 45vw;
+    padding: 0 0 0 10vw;
+    width: 50vw;
 }
 
-.titulo .suplency_titulo_gradiente, .titulo .studyplataform_titulo {
-    font-size: 4rem;
-    line-height: 4rem;  
+.titulo .suplency_titulo_gradiente {
+    display: inline;
+    font-size: 7rem;
+    line-height: 7rem; 
+    background: linear-gradient(245deg, #0A9A5A 16%, #0BCB9C 50%, #1E82FF 84%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.titulo .studyplataform_titulo {
+    font-size: 6rem;
+    line-height: 6rem;  
 }
 
 .titulo .texto_introducao {
@@ -148,10 +159,10 @@ main {
 /* DESENHO */
 
 .desenho {
-    width: 55vw;
-    padding: 2rem;
+    width: 50vw;
+    padding: 5rem;
 }
 .desenho img {
-    width: 100%;
+    width: auto;
     height: 100%;
 }
