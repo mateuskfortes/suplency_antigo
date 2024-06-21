@@ -7,6 +7,7 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
+    color: black;
 }
 
 .django {
@@ -25,12 +26,11 @@ body {
 
 /* ---------------- PADROES ----------------- */
 
-a{
+.cima a, .poppins{
     color: black;
     font-family: 'Poppins', "Source Sans 3", sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 1rem;
     letter-spacing: -0.04rem;
 }
 
@@ -54,6 +54,16 @@ a{
 
 .cima{
     height: 100vh;
+}
+
+.fundo_grade {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: -22%;
+    transform: translate(-50%, 0);
+    width: 70vw;
+    height: 70vw;
 }
 
 /* ----------------- HEADER ------------------ */
@@ -144,6 +154,9 @@ main {
     text-indent: 1rem;
     font-size: 1.5rem;
     padding: 1.5rem 0;
+    font-family: 'Source Sans Pro';
+    line-height: 150%;
+    letter-spacing: -0.03em;
 }
 
 .titulo .botoes_titulo {
@@ -152,6 +165,7 @@ main {
 }
 
 .titulo .botao_preto {
+    font-size: 1.2rem;
     background-color: black;
     display: inline-flex;
     padding: 0.8rem 1rem;
@@ -162,6 +176,7 @@ main {
 }
 
 .titulo .botao_branco {
+    font-size: 1.2rem;
     display: inline-flex;
     margin: 0 0 0 2rem;
     padding: 0.8rem 1rem;
@@ -189,9 +204,12 @@ main {
 
 .meio {
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
     padding: 0 2vw;
     background-color: rgb(214, 214, 238);
+    background: #22272E;
+    border: 1px solid #B8D8C7;
 }
 
 /* ----------- PRODUTOS SUPLENCY ------------- */
@@ -201,15 +219,17 @@ main {
 }
 
 .titulo_produtos_suplency{
+    color: white;
     font-size: 2.5rem;
     text-align: center;
-    margin: 0 0 4vw 0;
+    margin: 2rem 0 5rem 0;
 }
 
 .grid_produtos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 1rem auto;
+    margin: auto;
+    margin-bottom: 1rem;
     width: 85vw;
     gap: 5vw;
 }
@@ -221,20 +241,28 @@ main {
     background-color: white;
     padding: 2vw;
     text-align: center;
+    border: 0.914005px solid #B8D8C7;
+    border-radius: 20px;
 }
 
 .grid_produtos .produto img{
-    width: 8vw;
+    background-color: #1B99D4;;;
+    border-radius: 3rem;
+    width: 6rem;
+    height: 6rem;
 }
 
 .grid_produtos .produto h1 {  
+    font-family: 'Roboto';
+    font-weight: 600;
     font-size: 1.8rem;  
-    margin: 0.5rem;
+    margin: 2rem 0 1.5rem 0;
 }
 
 .grid_produtos .produto p {
-    margin: 1rem 0 0 0 ;
-    font-size: 1.4rem;  
+    font-family: 'Source Sans Pro';
+    line-height: 150%;
+    font-size: 1.45rem;  
 }
 
 /*
@@ -248,8 +276,11 @@ main {
 /* ------------------- ANEXOS ------------------*/
 
 .anexos {
+    font-family: 'Rubik';
     display: flex;
-    width: 100vw;
+    margin: 7vh 0 20vh 0;
+    width: 100%;
+    font-size: 1.4rem;
 
 }
 
@@ -257,15 +288,30 @@ main {
 
 .navegar {
     display: flex;
-    width: 35vw;
+    width: 40rem;
 }
 
 .navegar_suplency {
+    width: 10rem;
     margin: auto;
+    margin-top: 20vh;
+}
+
+.navegar_suplency li {
+    line-height: 2rem;
+}
+
+.redes_sociais {
+    width: 27vw;
+    padding: 3vw;
 }
 
 .redes_sociais .logo {
     width: 20vw;
+}
+
+.redes_sociais .conteudo {
+    padding: 0 2.5vw;
 }
 
 .links_redes_sociais {
@@ -280,6 +326,18 @@ main {
 
 .suporte {
     margin: auto;
+}
+
+.titulo_suporte {
+    font-size: 2.6rem;
+}
+
+.caixa_input {
+    all: unset;
+    border: 3px solid black;
+    border-radius: 40px;
+    width: 20rem;
+    padding: 1rem 1.5rem;
 }
 
 /*------*/
