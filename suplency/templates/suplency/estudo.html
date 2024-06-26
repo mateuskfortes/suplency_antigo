@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <!-- FontAwesome Icons -->
+    <!-- Icones -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -17,13 +17,13 @@
       rel="stylesheet"
     />
 
-
     <link rel="stylesheet" href="../../../static/css/caderno.css">
+    
     <script defer async src="../../../static/js/caderno.js"></script>
-
-    <link rel="stylesheet" href="{% static 'css/flash_cards.css'%}">
-    <link rel="stylesheet" href="{% static 'css/pomodoro.css'%}">
-
+    <script defer async src="../../../static/js/pomodoro.js"></script>
+    <script defer async src="../../../static/js/flash_cards.js"></script>
+    
+  
     <script defer async src="{% static "js/pomodoro.js" %}"></script>
     <script defer async src="{% static "js/flash_cards.js" %}"></script>
     <script defer async src="{% static "js/caderno.js" %}"></script>
@@ -85,66 +85,27 @@
     <div class="container">
         <div class="options">
           <!-- Text Format -->
-          <button id="bold" class="option-button format">
-            <i class="fa-solid fa-bold"></i>
-          </button>
-          <button id="italic" class="option-button format">
-            <i class="fa-solid fa-italic"></i>
-          </button>
-          <button id="underline" class="option-button format">
-            <i class="fa-solid fa-underline"></i>
-          </button>
-          <button id="strikethrough" class="option-button format">
-            <i class="fa-solid fa-strikethrough"></i>
-          </button>
-          <button id="superscript" class="option-button script">
-            <i class="fa-solid fa-superscript"></i>
-          </button>
-          <button id="subscript" class="option-button script">
-            <i class="fa-solid fa-subscript"></i>
-          </button>
+          <button id="bold" class="opcao-texto format"><span class="fa-solid fa-bold"></span></button>
+          <button id="italic" class="opcao-texto format"><span class="fa-solid fa-italic"></span></button>
+          <button id="underline" class="opcao-texto format"><span class="fa-solid fa-underline"></span></button>
+          <button id="strikethrough" class="opcao-texto format"><span class="fa-solid fa-strikethrough"></span></button>
+          <button id="superscript" class="opcao-texto script"><span class="fa-solid fa-superscript"></span></button>
+          <button id="subscript" class="opcao-texto script"><span class="fa-solid fa-subscript"></span></button>
           <!-- List -->
-          <button id="insertOrderedList" class="option-button">
-            <div class="fa-solid fa-list-ol"></div>
-          </button>
-          <button id="insertUnorderedList" class="option-button">
-            <i class="fa-solid fa-list"></i>
-          </button>
+          <button id="insertOrderedList" class="opcao-texto"><div class="fa-solid fa-list-ol"></div></button>
+          <button id="insertUnorderedList" class="opcao-texto"><span class="fa-solid fa-list"></span></button>
           <!-- Undo/Redo -->
-          <button id="undo" class="option-button">
-            <i class="fa-solid fa-rotate-left"></i>
-          </button>
-          <button id="redo" class="option-button">
-            <i class="fa-solid fa-rotate-right"></i>
-          </button>
-          <!-- Link -->
-          <button id="createLink" class="adv-option-button">
-            <i class="fa fa-link"></i>
-          </button>
-          <button id="unlink" class="option-button">
-            <i class="fa fa-unlink"></i>
-          </button>
-          <!-- Alignment -->
-          <button id="justifyLeft" class="option-button align">
-            <i class="fa-solid fa-align-left"></i>
-          </button>
-          <button id="justifyCenter" class="option-button align">
-            <i class="fa-solid fa-align-center"></i>
-          </button>
-          <button id="justifyRight" class="option-button align">
-            <i class="fa-solid fa-align-right"></i>
-          </button>
-          <button id="justifyFull" class="option-button align">
-            <i class="fa-solid fa-align-justify"></i>
-          </button>
-          <button id="indent" class="option-button spacing">
-            <i class="fa-solid fa-indent"></i>
-          </button>
-          <button id="outdent" class="option-button spacing">
-            <i class="fa-solid fa-outdent"></i>
-          </button>
+          <button id="undo" class="opcao-texto"><span class="fa-solid fa-rotate-left"></span></button>
+          <button id="redo" class="opcao-texto"><span class="fa-solid fa-rotate-right"></span></button>
+          <!-- alinhamento -->
+          <button id="justifyLeft" class="opcao-texto alinhamento"><span class="fa-solid fa-align-left"></span></button>
+          <button id="justifyCenter" class="opcao-texto alinhamento"><span class="fa-solid fa-align-center"></span></button>
+          <button id="justifyRight" class="opcao-texto alinhamento"><span class="fa-solid fa-align-right"></span></button>
+          <button id="justifyFull" class="opcao-texto alinhamento"><span class="fa-solid fa-align-justify"></span></button>
+          <button id="indent" class="opcao-texto spacing"><span class="fa-solid fa-indent"></span></button>
+          <button id="outdent" class="opcao-texto spacing"><span class="fa-solid fa-outdent"></span></button>
           <!-- Headings -->
-          <select id="formatBlock" class="adv-option-button">
+          <select id="formatBlock" class="opcao-texto-avancado">
             <option value="H1">H1</option>
             <option value="H2">H2</option>
             <option value="H3">H3</option>
@@ -153,20 +114,23 @@
             <option value="H6">H6</option>
           </select>
           <!-- Font -->
-          <select id="fontName" class="adv-option-button"></select>
-          <select id="fontSize" class="adv-option-button"></select>
+          <select id="fontName" class="opcao-texto-avancado"></select>
+          <select id="fontSize" class="opcao-texto-avancado"></select>
           <!-- Color -->
           <div class="input-wrapper">
-            <input type="color" id="foreColor" class="adv-option-button" />
+            <input type="color" id="foreColor" class="opcao-texto-avancado" />
             <label for="foreColor">Font Color</label>
           </div>
           <div class="input-wrapper">
-            <input type="color" id="backColor" class="adv-option-button" />
+            <input type="color" id="backColor" class="opcao-texto-avancado" />
             <label for="backColor">Highlight Color</label>
           </div>
         </div>
-        <div id="text-input" contenteditable="true"></div>
+        <div id="caderno" contenteditable="true"></div>
+  
     </div>
+
+    
 
     <a href="{% url "logout" %}">logout</a>
 </body>
