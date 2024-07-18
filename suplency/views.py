@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from .forms import CreateAccount, LoginAccount
+from django.db.models import Q
+from django.contrib.auth.views import PasswordResetView
 
 
 UserModel = get_user_model()
@@ -28,8 +30,10 @@ def loginView(request):
         form = LoginAccount()
     context = {
         'form': form,
-        'link': reverse('singin'),
-        'link_text': 'Ainda não tem uma conta? Crie aqui!',
+        'link_login': reverse('singin'),
+        'link_login_text': 'Ainda não tem uma conta? Crie aqui!',
+        'reset_password_link': reverse('reset_password'),
+        'reset_password_link_text': 'Esqueci minha senha.'
     }
     return render(request, 'suplency/enter.html', context)
 
@@ -45,8 +49,8 @@ def singinView(request):
         form = CreateAccount()
     context = {
         'form': form,
-        'link': reverse('login'),
-        'link_text': 'Já tem uma conta? Faça login aqui!',
+        'link_login': reverse('login'),
+        'link_login_text': 'Já tem uma conta? Faça login aqui!',
     }
 
     return render(request, 'suplency/enter.html', context)
@@ -56,7 +60,7 @@ def logoutView(request):
     return render(request, 'suplency/logout.html')
 
 def sendEmail(request):
-    send_mail('Assunt', 'Esse é o email que estou te enviando', 'mateusfortes101@gmail.com', ['mateusfortes10@gmail.com'])
+    send_mail('Recuperar sua senha.', 'Esse é o email que estou te enviando', 'mateusfortes101@gmail.com', ['mateusfortes10@gmail.com'])
     return HttpResponse('email enviado')
 
 def carregarPagina(request, materia, pagina):

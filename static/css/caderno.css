@@ -1,73 +1,32 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  .container {
-    background-color: #ffffff;
-    width: 90vmin;
-    padding: 50px 30px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    border-radius: 10px;
-  }
-  .options {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 15px;
-  }
-  button {
-    height: 28px;
-    width: 28px;
-    display: grid;
-    place-items: center;
-    border-radius: 3px;
-    border: none;
-    background-color: #ffffff;
-    outline: none;
-    color: #020929;
-  }
-  select {
-    padding: 7px;
-    border: 1px solid #020929;
-    border-radius: 3px;
-  }
-  .options label,
-  .options select {
-    font-family: "Poppins", sans-serif;
-  }
-  .input-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  input[type="color"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    width: 40px;
-    height: 28px;
-    border: none;
-    cursor: pointer;
-  }
-  input[type="color"]::-webkit-color-swatch {
-    border-radius: 15px;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #020929;
-  }
-  input[type="color"]::-moz-color-swatch {
-    border-radius: 15px;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #020929;
-  }
-  #caderno {
-    margin-top: 10px;
-    border: 1px solid #dddddd;
-    padding: 20px;
-    height: 50vh;
-  }
-  .active {
-    background-color: #e0e9ff;
-  }
+#conteiner_materias, #select_materias {
+  display: flex;
+}
+
+#conteiner_materias #select_materias .nome_materia, #conteiner_materias #bt_nova_materia {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.materia_selecionada {
+  background-color: lightgray;
+}
+
+.ql-container {
+  height: auto;
+}
+
+#caderno .ql-editor {
+  padding: 20px;
+  height: 300px;
+  overflow-y: hidden;
+}
+
+#show-numero-pg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+}

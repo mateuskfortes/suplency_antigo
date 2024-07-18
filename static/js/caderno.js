@@ -1,302 +1,156 @@
-const input_opcoes = document.querySelectorAll(".opcao-texto");
-const input_opcoes_avancado = document.querySelectorAll(".opcao-texto-avancado");
+const caderno = document.getElementById('caderno')
+const conteiner_select_materia = document.getElementById('select_materias')
+const classe_nome_materia = 'nome_materia'
+const classe_materia_selecionada = 'materia_selecionada'
+const bt_nova_materia = document.getElementById('bt_nova_materia')
+const show_numero_pg = document.getElementById('show-numero-pg')
+const altura_maxima_pagina = 300
+const quantidade_max_caracteres = 10000
+const nova_pg_padrao = '<p></p>'
+const nome_materia_padrao = 'Nova matéria '
+let save_ultima_materia = 'Nova matéria 2'
+let save_materias = {
+  'Nova matéria 1': [0, ['<p>oiii</p>']],
+  'Nova matéria 2': [1, ['<p>ola</p>', '<p>tchauuuuu</p>']],
+  'Nova matéria 3': [0, ['<p>ola</p>', '<p>nauummm</p>']]
+}
+let materia_atual = save_ultima_materia
+let pagina_atual = save_materias[materia_atual][0]
 
-const input_fontName = document.getElementById("fontName");
-const input_fontSize = document.getElementById("fontSize");
-const caderno = document.getElementById("caderno");
-
-const input_de_alinhamento = document.querySelectorAll(".alinhamento");
-const input_de_espacamento = document.querySelectorAll(".spacing");
-const input_de_formatacao = document.querySelectorAll(".format");
-const input_de_script = document.querySelectorAll(".script");
-
-let ultima_posicao_cursor = null
-
-// LISTA DE FONTES
-const fontes = [
-  "Times New Roman",
-  "Arial",
-  "Verdana",
-  "Garamond",
-  "Georgia",
-  "Courier New",
-  "cursive",
-];
-
-
-const initializer = () => {
-  caderno.focus()
-  salvarPosicaoCursor()
-  createMutationObserver();
-
-  destacar(input_de_alinhamento);
-  destacar(input_de_script);
-  destacar(input_de_espacamento);
-  destacar(input_de_formatacao, false);
-
-  caderno.addEventListener("mouseup", salvarPosicaoCursor);
-
-  // CRIA AS OPÇÕES PARA O NOME DA FONTE
-  fontes.map((fontName) => {
-    let opcao = document.createElement("option");
-    opcao.value = fontName;
-    opcao.innerHTML = fontName;
-    input_fontName.appendChild(opcao);
-  });
-
-  // CRIA AS OPÇÕES PARA O TAMANHO DA FONTE
-  for (let i = 1; i <= 7; i++) {
-    let opcao = document.createElement("option");
-    opcao.value = i;
-    opcao.innerHTML = i;
-    input_fontSize.appendChild(opcao);
+function setNomeMateriaAuto() {
+  contador_materia = 0;
+  var continuar = true
+  while (continuar) {
+    if (!save_materias.hasOwnProperty(nome_materia_padrao + ++contador_materia)) return nome_materia_padrao + contador_materia
   }
-  // TAMANHO PADRAO DA FONTE
-  input_fontSize.value = 3;
-};
+}
 
-
-// DESTACA OS BOTOES PRECIONADOS
-function destacar(classeBotoes, unico=true) {
-  classeBotoes.forEach((botao) => {
-    botao.addEventListener("click", () => {
-      if (unico) {
-        removerDestaque(classeBotoes);
+function mudarNome(materia) {
+  function deixarEditavel() {
+    materia.setAttribute('contenteditable', 'true')
+  }
+  function removerEditavel() {
+    materia.setAttribute('contenteditable', 'false')
+  }
+  function setNomeAntigo() {
+    materia.innerText = nome_antigo
+    save_materias[nome_antigo] = conteudo_materia
+  }
+  function setNomeNovo() {
+    materia.id = materia.innerText
+    save_materias[materia.innerText] = conteudo_materia
+    materia_atual = materia.innerText
+  }
+  function keyHandler(event) {
+    if (event.key === 'Enter') {
+      materia.removeEventListener('blur', blurHandler)
+      materia.removeEventListener('keydown', keyHandler);
+      if (save_materias.hasOwnProperty(materia.innerText) || materia.innerText == '') {
+        setNomeAntigo()
       }
-      botao.classList.toggle("active");
-    });
-  });
-};
-
-function removerDestaque(classeBotoes){
-  classeBotoes.forEach((botao) => {
-    botao.classList.remove("active");
-  });
-};
-
-window.onload = initializer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function createMutationObserver() {
-  const observer = new MutationObserver(function(mutationsList, observer) {
-      for(let mutation of mutationsList) {
-          if (mutation.type === 'characterData') {
-              salvarPosicaoCursor()
-          }
+      else {
+        setNomeNovo()
       }
-  });
+      removerEditavel()
+      mudarMateriaAtual(materia.innerText)
+    }
+  }
+  function blurHandler() {
+    setNomeAntigo()
+    removerEditavel();
+    materia.removeEventListener('blur', blurHandler);
+    materia.removeEventListener('keydown', keyHandler)
+    mudarMateriaAtual(materia.innerText)
+  };
 
-  // Observa mudanças no conteúdo do elemento contenteditable
-  observer.observe(caderno, { childList: true, subtree: true, characterData: true });
+
+  let nome_antigo = materia.innerText
+  var conteudo_materia = save_materias[nome_antigo]
+  delete save_materias[nome_antigo]
+  materia.innerText = ''
+
+  materia.addEventListener('blur', blurHandler);
+  materia.addEventListener('keydown', keyHandler)
+
+  deixarEditavel()
+  materia.focus()
 }
 
-// Chama a função para criar o observador de mutações
+function criarSelectMaterias(key) {
+  const novo_select_materia = document.createElement('div')
+  novo_select_materia.className = classe_nome_materia
+  novo_select_materia.addEventListener('dblclick', () => mudarNome(novo_select_materia))
+  conteiner_select_materia.appendChild(novo_select_materia)
+  var nome
+  if (key) {
+    novo_select_materia.textContent = key
+  }
+  else {
+    novo_select_materia.textContent = setNomeMateriaAuto()
+    save_materias[novo_select_materia.textContent] = [0, [nova_pg_padrao]]
+    mudarNome(novo_select_materia)
+  }
+  novo_select_materia.id = novo_select_materia.textContent
+  novo_select_materia.addEventListener('click', ()=>mudarMateriaAtual(novo_select_materia.textContent))
+}
 
-function salvarPosicaoCursor() {
-  const selecao = window.getSelection();
-  if (selecao.rangeCount > 0) {
-    const range = selecao.getRangeAt(0);
-    ultima_posicao_cursor = {
-      startContainer: range.startContainer,
-      startOffset: range.startOffset,
-      endContainer: range.endContainer,
-      endOffset: range.endOffset
-    };
-    console.log(ultima_posicao_cursor)
+function novaPagina() {
+  var n_nova_pagina = pagina_atual+1
+  save_materias[materia_atual][1].splice(n_nova_pagina, 0, nova_pg_padrao)
+  mudarPagina(n_nova_pagina)
+}
+
+function mudarPagina(nova_pagina, mesma_materia=true) {
+  n_pg = save_materias[materia_atual][1].length
+  if (nova_pagina < n_pg && nova_pagina >= 0) {
+    if (mesma_materia) save_materias[materia_atual][1][pagina_atual] = quill.root.innerHTML
+    pagina_atual = nova_pagina
+    quill.root.innerHTML = save_materias[materia_atual][1][pagina_atual]
+    save_materias[materia_atual][0] = pagina_atual
+    show_numero_pg.innerText = pagina_atual+1
   }
 }
 
-function setarPosicaoCursor() { 
-  if (ultima_posicao_cursor) {
-    const selecao = window.getSelection();
-    const range = document.createRange();
-    range.setStart(ultima_posicao_cursor.startContainer, ultima_posicao_cursor.startOffset);
-    range.setEnd(ultima_posicao_cursor.endContainer, ultima_posicao_cursor.endOffset);
-    selecao.removeAllRanges();
-    selecao.addRange(range);
+function mudarMateriaAtual(nova_materia_atual, load=false) {
+  if (save_materias.hasOwnProperty(nova_materia_atual)) {
+    if (!load) save_materias[materia_atual][1][pagina_atual] = quill.root.innerHTML
+    materia_atual = nova_materia_atual
+    save_ultima_materia = materia_atual
+    conteiner_select_materia.querySelectorAll('.'+classe_nome_materia).forEach(conteiner=>conteiner.classList.remove(classe_materia_selecionada))
+    document.getElementById(nova_materia_atual).classList.add(classe_materia_selecionada)
+    mudarPagina(save_materias[materia_atual][0], false)
   }
 }
 
-let lastCursorPosition = null;
+document.getElementById('new-page').addEventListener('click', () => novaPagina());
 
-function saveCursorPosition() {
-  const selection = window.getSelection();
-  if (selection.rangeCount > 0) {
-    const range = selection.getRangeAt(0);
-    lastCursorPosition = range.endOffset; // Armazena o offset de onde o cursor está no final da seleção
-  }
-}
+document.getElementById('prev-page').addEventListener('click', () => mudarPagina(pagina_atual-1));
 
-function restoreCursorPosition() {
-  const selection = window.getSelection();
-  if (lastCursorPosition !== null) {
-    const range = document.createRange();
-    range.setStart(selection.anchorNode, lastCursorPosition);
-    range.collapse(true);
-    selection.removeAllRanges();
-    selection.addRange(range);
-  }
-}
+document.getElementById('next-page').addEventListener('click', () => mudarPagina(pagina_atual+1));
 
-// FUNÇÃO PRINCIPAL
-function modifyText(command, defaultUi, value) {
-  setarPosicaoCursor()
-  document.execCommand(command, defaultUi, value);
+const options = {
+  modules: {
+    toolbar: '#toolbar',
+  },
+  placeholder: 'O que você está pensando?',
+  theme: 'snow'
+};
+const quill = new Quill(caderno, options)
+quill.on('text-change', ()=> {
+  var altura_conteudo = caderno.querySelector('.ql-editor').scrollHeight
   
-};
-
-// OPÇÕES QUE NÃO PRECISAM DE PARÂMETRO
-input_opcoes.forEach((botao) => {
-  botao.addEventListener("click", () => {
-    if (botao == document.getElementById('insertOrderedList')) {
-      saveCursorPosition()
-      modifyText(botao.id, false, null);
-      restoreCursorPosition()
-    } else {
-      modifyText(botao.id, false, null);
-    }
-  });
+  if (altura_conteudo > altura_maxima_pagina) {
+    quill.history.undo()
+    alert("Você atingiu o tamanho máximo permitido do editor.");
+  }
+  var texto = quill.root.innerHTML
+  if (texto.length > quantidade_max_caracteres) {
+    quill.history.undo()
+    alert("Você atingiu o limite máximo de " + quantidade_max_caracteres + " caracteres.");
+  }
 });
-
-// OPÇÕES QUE PRECISAM DE PARÂMETRO
-input_opcoes_avancado.forEach((botao) => {
-  botao.addEventListener("change", () => {
-    modifyText(botao.id, false, botao.value);
-  });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-caderno.addEventListener("click", updateOptions);
-
-function updateOptions() {
-  updateFontSize()
-  updateNegrito()
+for (var key in save_materias) {
+  criarSelectMaterias(key)
 }
-
-function updateFontSize() {
-  const estilo = estiloLocalSelecionado()
-  if (estilo) {
-    const fontSize = parseInt(estilo.fontSize)
-    var selectedFontSize = null
-    switch (fontSize) {
-      case 10:
-        selectedFontSize = 1;
-        break;
-      case 13:
-        selectedFontSize = 2;
-        break;
-      case 16:
-        selectedFontSize = 3;
-        break;
-      case 18:
-        selectedFontSize = 4;
-        break;
-      case 24:
-        selectedFontSize = 5;
-        break;
-      case 32:
-        selectedFontSize = 6;
-        break;
-      case 48:
-        selectedFontSize = 7;
-        break;
-      default:
-        selectedFontSize = 1
-        break;
-                                  
-    }
-    input_fontSize.value = selectedFontSize;
-  }
-}
-
-function updateNegrito() {
-  const estilo = estiloLocalSelecionado()
-  if (estilo) {
-    if (estilo.fontWeight === 'bold') {
-      
-    }
-  }
-}
-
-
-// RETORNA O OBJETO SELECIONADO
-function estiloLocalSelecionado() {
-  const selecao = window.getSelection();
-  if (selecao.rangeCount > 0) {
-    const range = selecao.getRangeAt(0);
-    const elemento_em_foco = range.startContainer.parentElement;
-    const estilo = window.getComputedStyle(elemento_em_foco);
-    return estilo;
-  }
-  return null;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+mudarMateriaAtual(materia_atual, true)
+bt_nova_materia.addEventListener('click', () => criarSelectMaterias())
