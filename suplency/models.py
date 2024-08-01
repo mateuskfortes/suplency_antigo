@@ -1,62 +1,70 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
+import uuid
 
 class Usuario(AbstractUser):
     email = models.EmailField(_("email address"), unique=True)
 
-    ultima_materia = models.ForeignKey('Materia', null=True, blank=True, on_delete=models.SET_NULL, related_name='usuarios_ultima_materia')
-    ultima_pagina = models.ForeignKey('Pagina', null=True, blank=True, on_delete=models.SET_NULL, related_name='usuarios_ultima_pagina')
-
     grupos = models.ManyToManyField(
         'auth.Group',
-        related_name='usuarios',  # Adicionado related_name personalizado
+        related_name='usuarios',
         blank=True,
-        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
         related_query_name='usuario',
     )
 
     permissoes = models.ManyToManyField(
         'auth.Permission',
-        related_name='usuarios',  # Adicionado related_name personalizado
+        related_name='usuarios',
         blank=True,
-        help_text='Specific permissions for this user.',
         related_query_name='usuario',
     )
 
-
 class Pomodoro(models.Model):
-    tempo_de_foco = models.DurationField()  # Alterado para DurationField
-    tempo_de_pausa = models.DurationField()  # Alterado para DurationField
-    tempo_de_pausa_longa = models.DurationField()  # Alterado para DurationField
+    tempo_de_foco = models.DurationField() 
+    tempo_de_pausa = models.DurationField() 
+    tempo_de_pausa_longa = models.DurationField()  
     numero_focos_ate_pausa_longa = models.PositiveSmallIntegerField()
 
-    usuario = models.OneToOneField('Usuario', on_delete=models.CASCADE, related_name='pomodoro')
+    usuario = models.OneToOneField('Usuario', null=False, on_delete=models.CASCADE, related_name='pomodoro')
 
+class Caderno(models.Model):
+    ultima_materia = models.ForeignKey('Materia', null=True, on_delete=models.SET_NULL, related_name='ultima_materia')
+    usuario = models.OneToOneField('Usuario', null=False, on_delete=models.CASCADE, related_name='caderno')
 
 class Materia(models.Model):
-    nome_da_materia = models.CharField(max_length=20)
-    cor_da_materia = models.CharField(max_length=6)
+    nome = models.CharField(max_length=32, default='Nova matéria')
+    cor = models.CharField(max_length=32, default='white')
 
-    usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE, related_name='materias')
+    ultima_pagina = models.ForeignKey(
+        'Pagina', 
+        null=True,
+        on_delete=models.SET_NULL, 
+        related_name='ultima_materia')
+    caderno = models.ForeignKey('Caderno', null=False, on_delete=models.CASCADE, related_name='materia')
 
 
 class Pagina(models.Model):
-    numero_da_pagina = models.PositiveIntegerField()
-    cor_da_folha = models.CharField(max_length=6)
-    conteudo = models.CharField(max_length=1500)
+    numero = models.PositiveIntegerField(null=False)
+    cor = models.CharField(max_length=32, default='white')
+    conteudo = models.TextField(default='<p></p>')
 
-    materia = models.ForeignKey('Materia', on_delete=models.CASCADE, related_name='paginas')
+    materia = models.ForeignKey('Materia', null=False, on_delete=models.CASCADE, related_name='pagina')
+    
+    class Meta:
+        ordering = ['numero']
 
 
 class FlashCard(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    
     pergunta = models.CharField(max_length=200)
     resposta = models.CharField(max_length=200)
 
     materias = models.ManyToManyField('Materia', through='FlashCardMateria')
-    usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE, related_name='flashcards')
+    usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE, related_name='flashcard')
 
 
 class FlashCardMateria(models.Model):
-    materia = models.ForeignKey('Materia', on_delete=models.CASCADE, related_name='flashcard_materias')
-    flash_card = models.ForeignKey('FlashCard', on_delete=models.CASCADE, related_name='flashcard_materias')
+    materia = models.ForeignKey('Materia', on_delete=models.CASCADE, related_name='flashcard_materia')
+    flash_card = models.ForeignKey('FlashCard', on_delete=models.CASCADE, related_name='flashcard_materia')

@@ -1,10 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta id="csrf_token" content="{{ csrf_token }}">
+    <meta id="link_load_flashcard" content="{% url "load_flashcard" %}">
+    <meta id="link_save_flashcard" content="{% url "save_flashcard" %}">
+    
+
+    <link rel="stylesheet" href="{% static "css/flashcard.css" %}" />
+
+    <script defer async src="{% static "js/flashcard.js" %}"></script>
+
     <title>Flashcards</title>
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="nav">
@@ -12,7 +21,6 @@
       <div class="Criar">
         <button onclick="create()">Criar novo</button>
         <button onclick="removeAll()">Excluir todos</button>
-        <button onclick="play()">Play</button>
       </div>
     </div>
 
@@ -29,7 +37,6 @@
     </div>
 
     <div class="flashcards"></div>
-    <script src="script.js"></script>
     
   </body>
 </html>
