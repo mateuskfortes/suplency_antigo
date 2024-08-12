@@ -5,7 +5,7 @@ from django import forms
 from suplency.models import Usuario
 
 class CreateAccount(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
+    class Meta:
         model = Usuario
         fields = ['username', 'email', 'password1', 'password2']
         widgets = {
