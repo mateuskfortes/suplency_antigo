@@ -10,7 +10,8 @@ from django.db import models
 import json
 
 UserModel = get_user_model()
-
+from setup.settings import BASE_DIR
+print(BASE_DIR)
 def HomeView(request):
     return render(request, 'suplency/home.html')
 

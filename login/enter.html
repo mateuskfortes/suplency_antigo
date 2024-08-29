@@ -1,0 +1,49 @@
+<span id="span-1">
+    {% load static %}
+</span>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+
+    <script defer async src="{% static 'js/singin.js' %}"></script>
+    <title>sign-in</title>
+</head>
+<body>
+    <svg  class="fundo_grade" width="1151" height="795" viewBox="0 0 1151 795" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.49986 -123L1 795M182.312 -123L180.813 795M362.125 -123L360.625 795M541.937 -123L540.437 795M721.75 -123L720.25 795M901.562 -123L900.062 795M1081.38 -123L1079.88 795M1261.19 -123L1259.69 795M1441 -123L1439.5 795M1.19283 190.65L1440.75 190.65M1.19283 29.6017L1440.75 29.6018M1.19283 351.698H1440.75M1.19283 677.859H1440.75M1.19283 517.209H1440.75" stroke="url(#paint0_radial_5_2609)" stroke-opacity="0.4"/>
+        <defs>
+            <radialGradient id="paint0_radial_5_2609" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(554 291.5) rotate(133.526) scale(852.346 518.474)">
+            <stop/>
+            <stop offset="1" stop-color="white" stop-opacity="0"/>
+            </radialGradient>
+        </defs>
+    </svg>
+    <div id="title">
+        <img src="/Sem título.jpg" alt="suplency" width="60%" height="auto">
+    </div>
+    <div id="suplency">
+        <img src="/Sem título.jpg" alt="suplency" width="100%" height="auto">
+    </div>
+    <section id="login">
+        <div id="title-2">
+            Login
+        </div>
+        <form method="POST" ,="" class="login" id="formulario">
+            <input type="hidden" name="csrfmiddlewaretoken" value="fzNdTCQb55Fr02pDBp03QB7T4vvD4etxHB13VakzXdgK2lLjmMkgMFfm9WImwBEJ">
+            
+                <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" placeholder="Email ou usuário" class="input" required="" id="id_username"> 
+                
+                <input type="password" name="password" autocomplete="current-password" placeholder="Senha" class="input" required="" id="id_password"> 
+                
+            
+            <input class="submit" type="submit" value="Sign-in">
+            <a href="/reset_password/">Esqueci minha senha.</a>
+            <div><p>Ainda não tem uma conta? <a href="/singin/">Crie aqui!</a></p></div>
+        </form>
+    </section>
+</body>
+</html>
