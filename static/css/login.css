@@ -1,97 +1,137 @@
-
-body {
-    background-color: #000000;
+html{
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: right;
+    background-image: url(/Sem\ título1.jpg);
+    background-repeat: no-repeat;
+    background-size: 0vh;
 }
-.login {
-    display: flex;
+body{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
     flex-direction: column;
-    background-color: white;
-    height: 95vh;
+    overflow: hidden;
     align-items: center;
+    justify-content: center;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 11% 5% auto;
 }
-.input {
-    padding-left: 1%;
-    background-color: lightgrey;
-    border: none;
-    border-radius: 2.5%;
-    height: 3.5%;
-    margin: 0.15%;
-    margin-top: 5%;
-    width: 80%;
+
+body > * {
+    padding: .1rem;
+    font-family: 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 175%;
+    color: #8A92A6;
 }
-.botao_submit {
+
+#title-2{
+    font-family: 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 143.7%;
+    letter-spacing: -0.04em;
+    color: #000000;
+}
+
+#container1{
+    height: 5vh;
+    width: 100vw;
     display: flex;
-    background-color: #000000;
-    color: whitesmoke;
-    margin-top: 10%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+#title{
+    height: fit-content;
+    width: fit-content;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    justify-self: start;
+}
+
+#container2{
+    height: 95vh;
+    width: 100vw;
+    display: flex;
     justify-content: center;
     align-items: center;
-    height: 8%;
+    flex-direction: column;
+}
+
+span{
+    display: none;
+    visibility: hidden;
+}
+
+#login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    grid-column: 2;
+    grid-row: 3;
+}
+
+#suplency{
+    height: fit-content;
     width: 30%;
-    border-radius: 5%;
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: start;
+    padding: 0%;
+}
+
+#formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0%;
+    gap: 2rem;
+    width: 40vw;
+    height: 48vh;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1%;
+    padding-left: 4%;
+    gap: 2rem;
+    width: 30vw;
+    height: 8.5%;
+    border: 2px solid #000000;
+    border-radius: 2rem;
+}
+
+.submit{
+    background-color: #000000;
+    height: 8.5%;
+    width: 23%;
+    border-radius: 2rem;
+    color: #FFFFFF;
     border: none;
+    font-family: 'Helvetica' sans-serif;
+    font-style: normal;
+    font-weight: bold;
 }
-button:hover {
-    cursor: pointer;
-}
-.login a {
-    margin-top: 35%;
-    text-decoration: none;
-    color: #858585;
-}
-
-.erro {
-    background-color: red;
-}
-.disabled {
-    background-color: gray;
-}
-
-@media screen and (max-width: 992px) {
-    body {
-        background-image: linear-gradient(to top, #1e3f5a, #001822);
-    }
-    section#login {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 5%;
-        height: 90vh;
-        width: 90vw;
-    }
-    section#login > div.login {
-        width: 100%;
-        height: 100%;
-        border-radius: 2.5%;
-    }
-    section#login > div.login button {
-        font-size: 200%;
-    }
-}
- 
-@media screen and (min-width: 992px) {
-    body {
-        background-image: linear-gradient(to top, #1e3f5a, #000000);
-        background-repeat: no-repeat;
-    }
-    section#login {
-        display: flex;
-        align-items: center;
-        height: 90vh;
-        width: 45vw;
-    }
-    section#login > div.login {
-        width: 100%;
-        height: 100%;
-        border-radius: 2.5% 0% 0% 2.5%;
-    }
-    section#login > div.login button {
-        font-size: 240%;
-    }
+.fundo_grade {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: -16%;
+    transform: translate(-50%, 0);
+    width: 70vw;
+    height: 70vw;
 }
