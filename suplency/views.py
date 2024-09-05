@@ -18,7 +18,6 @@ def HomeView(request):
 def estudoView(request):
     return render(request, 'suplency/estudo.html')
 
-login_required('login')
 def flashCardView(request):
     return render(request, 'suplency/flashcard.html')
 
@@ -98,6 +97,7 @@ def cadernoView(request):
    
     response = {}
     if request.user.is_authenticated:
+        print('oi')
         caderno, criado = Caderno.objects.get_or_create(usuario=request.user)
         materias_response = {}
         if criado:

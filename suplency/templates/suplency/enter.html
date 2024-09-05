@@ -21,27 +21,27 @@
             </radialGradient>
         </defs>
     </svg>
-    <div id="title">
+    <a href="{% url 'home' %}" id="title">
         <img src="{% static 'img/suplency.png' %}" alt="suplency" width="60%" height="auto">
-    </div>
-    <div id="suplency">
+    </a>
+    <a href="{% url 'home' %}" id="suplency">
         <img src="{% static 'img/suplency.png' %}" alt="suplency" width="100%" height="auto">
-    </div>
+    </a>
     <section id="login">
         <div id="title-2">
             Login
         </div>
-        <form method="POST" ,="" class="login" id="formulario">
-            <input type="hidden" name="csrfmiddlewaretoken" value="fzNdTCQb55Fr02pDBp03QB7T4vvD4etxHB13VakzXdgK2lLjmMkgMFfm9WImwBEJ">
-            
-                <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" placeholder="Email ou usuário" class="input" required="" id="id_username"> 
-                
-                <input type="password" name="password" autocomplete="current-password" placeholder="Senha" class="input" required="" id="id_password"> 
-                
-            
+        
+        <form method='POST' class="login" id="formulario">
+            {% csrf_token %}
+            {% for field in form %}
+                {{field}} 
+                {{field.errors}}
+            {% endfor %}
+
             <input class="submit" type="submit" value="Sign-in">
-            <a href="/reset_password/">Esqueci minha senha.</a>
-            <div><p>Ainda não tem uma conta? <a href="/singin/">Crie aqui!</a></p></div>
+            <a href="{{ reset_password_link }}">{{ reset_password_link_text }}</a>
+            <div><p>Ainda não tem uma conta? <a href="{{ link_login }}">{{ link_login_text }}</a></p></div>
         </form>
     </section>
 </body>
