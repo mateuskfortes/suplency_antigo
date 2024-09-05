@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="csrf_token" content="{{ csrf_token }}">
+    <meta id="link_caderno" content="{% url "caderno" %}">
+    <meta id="link_salvar_caderno" content="{% url "salvar_caderno" %}">
+
+    <link rel="icon" href="{% static "icon/livro.ico" %}" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+    <!--
+    <link rel="stylesheet" href="../../../static/css/caderno.css">
+    <link rel="stylesheet" href="../../../static/css/pomodoro.css">
+    -->
+    <link rel="stylesheet" href="pomodoro.css">
+    <link rel="stylesheet" href="caderno.css">
+    <link rel="stylesheet" href="estudo.css">
+
+    <script defer src="pomodoro.js"></script>
+    
+    <title>estudando...</title>
+</head>
+<body>
+        <section class="cima">
+        <svg  class="fundo_grade" width="1151" height="795" viewBox="0 0 1151 795" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.49986 -123L1 795M182.312 -123L180.813 795M362.125 -123L360.625 795M541.937 -123L540.437 795M721.75 -123L720.25 795M901.562 -123L900.062 795M1081.38 -123L1079.88 795M1261.19 -123L1259.69 795M1441 -123L1439.5 795M1.19283 190.65L1440.75 190.65M1.19283 29.6017L1440.75 29.6018M1.19283 351.698H1440.75M1.19283 677.859H1440.75M1.19283 517.209H1440.75" stroke="url(#paint0_radial_5_2609)" stroke-opacity="0.4"/>
+            <defs>
+                <radialGradient id="paint0_radial_5_2609" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(554 291.5) rotate(133.526) scale(852.346 518.474)">
+                <stop/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </radialGradient>
+            </defs>
+        </svg>
+        <header>
+            <div class="interface">
+                <span class="logo">
+                    <a href="{% url 'home' %}">
+                        <img src="../../../static/img/suplency.png" src="{% static "img/suplency.png" %}"  alt="Logo suplency">
+                    </a>
+                </span>
+
+                <nav class="menu_desktop">
+                    <ul>
+                        <li><a>Suporte</a></li>
+                        <li><a>Como usar?</a></li>
+                        <li><a>Quem somos?</a></li>
+                        <li><a href="{% url 'login'%}">Login</a></li>
+                    </ul>
+                </nav>
+
+                <span class="espaco_cadastro">
+                    <label for="link_cadastro" class="botao botao_cadastro">
+                        <a href="{% url "singin"%}" name="link_cadastro"> Cadastre-se </a>
+                    </label>
+                </span>
+            </div>
+        </header>
+        <section id="centro">
+            <div class="titulo_estudo">
+                <h1>CHEGOU A HORA DE ESTUDAR</h1>
+            </div>
+            <div class="pomodoro">
+                <div class="conteiner_watch">
+                    <div><span id="estado_timer"></span>
+                        <span id="estado_foco" class="estado"></span>
+                        <span id="estado_pausa" class="estado"></span>
+                        <span id="estado_descanso" class="estado"></span>
+                    </div>
+                    <div class="watch">
+                        <div>
+                          <span id="minutes">00</span>
+                        </div>
+                        <div>
+                          <span id="seconds">00</span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button id="start/stop">Iniciar</button>
+                        <button id="continuar">continuar</button>
+                    </div>
+                </div>
+
+                <label for="tp_foco">
+                    <p>Digite o tempo de foco:</p>
+                    <input id="tp_foco" type="number" min="0">
+                </label>
+                <label for="tp_pausa">
+                    <p>Digite o tempo de pausa:</p>
+                    <input id="tp_pausa" type="number" min="0">
+                </label>
+                <label for="tp_pausa_longa">
+                    <p>Digite o tempo da pausa longa</p>
+                    <input id="tp_pausa_longa" type="number" min="0">
+                </label>
+                <label for="focos_ate_pausa_longa">
+                    <p>Digite o numero de focos até a pausa longa</p>
+                    <input id="focos_ate_pausa_longa" type="number" min="1">
+                </label>
+            </div> 
+        </section>
+    </section>
+    <!-- Método pomodoro -->
+      
+    <!-- Bloco de notas -->
+    <div id="conteiner_materias">
+        <div id="select_materias">
+        </div>
+        <div id="bt_nova_materia">+</div>
+    </div>
+    <div id="toolbar"></div>
+    <div id="caderno"></div>
+    <div>
+        <button id="prev-page">prev</button>
+        <button id="next-page">next</button>
+        <button id="new-page">new</button>
+        <button id="save">save</button>
+        <div id="show-numero-pg">1</div>
+    </div>
+    
+    <a href="{% url "logout" %}">logout</a>
+    <!--
+    <script src="../../../static/js/pomodoro.js"></script>
+    <script src="../../../static/js/caderno.js"></script>
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="caderno.js"></script>
+</body>
+</html>

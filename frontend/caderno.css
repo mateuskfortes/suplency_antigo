@@ -1,0 +1,119 @@
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="8pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="8pt"]::before {
+  content: '8 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="9pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="9pt"]::before {
+  content: '9 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="10pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="10pt"]::before {
+  content: '10 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="11pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="11pt"]::before {
+  content: '11 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="12pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="12pt"]::before {
+  content: '12 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="14pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="14pt"]::before {
+  content: '14 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="18pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="18pt"]::before {
+  content: '18 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="24pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="24pt"]::before {
+  content: '24 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="36pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="36pt"]::before {
+  content: '36 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="48pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="48pt"]::before {
+  content: '48 pt';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="72pt"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="72pt"]::before {
+  content: '72 pt';
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="arial"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="arial"]::before {
+  content: 'Arial';
+  font-family: 'Arial';
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="courier"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="courier"]::before {
+  content: 'Courier New';
+  font-family: 'Courier New';
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="georgia"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="georgia"]::before {
+  content: 'Georgia';
+  font-family: 'Georgia';
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="roboto"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="roboto"]::before {
+  content: 'Roboto';
+  font-family: 'Roboto';
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="times"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="times"]::before {
+  content: 'Times New Roman';
+  font-family: 'Times New Roman';
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="trebuchet"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="trebuchet"]::before {
+  content: 'Trebuchet MS';
+  font-family: 'Trebuchet MS';
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="verdana"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="verdana"]::before {
+  content: 'Verdana';
+  font-family: 'Verdana';
+}
+.ql-snow .ql-picker.ql-font {
+  width: 136px;
+}
+.ql-snow .ql-picker.ql-size {
+  width: 60px;
+}
+/* ------------------*/
+
+#conteiner_materias, #select_materias {
+  display: flex;
+}
+
+.op_materia,#bt_nova_materia {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.materia_selecionada {
+  background-color: lightgray;
+}
+
+.ql-container {
+  height: auto;
+}
+
+#caderno .ql-editor {
+  padding: 20px;
+  height: 300px;
+  overflow-y: hidden;
+}
+
+#show-numero-pg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+}

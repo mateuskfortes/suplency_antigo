@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
+}
+
+:root {
+    --tamanho_header: 7rem;
+    --tamanho_cantos_header: 15rem;
+}
+
+.cima a, .poppins{
+    color: black;
+    font-family: 'Poppins', "Source Sans 3", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: -0.04rem;
+}
+
+.botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    border: 2px solid #000000;
+    border-radius: 2rem;
+    font-size: 1rem;
+}
+
+
+/*
+|------------------------------------------------|
+|------------------------------------------------|
+|                    CIMA                        |
+|------------------------------------------------|
+|------------------------------------------------|
+*/ 
+.cima{
+    height: 100vh;
+}
+
+.fundo_grade {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: -22%;
+    transform: translate(-50%, 0);
+    width: 70vw;
+    height: 70vw;
+}
+
+/* ----------------- HEADER ------------------ */
+
+header {
+    height: var(--tamanho_header);
+    display: flex;
+    align-items: center;
+}
+
+
+/* LOGO */
+
+.interface .logo {
+    width: var(--tamanho_cantos_header);
+}
+
+.logo img {
+    width: 100%;
+}
+
+/* LINKS HEADER */
+
+header .interface {
+    display: inline-flex;
+    width: 100%;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header ul{
+    display: flex;
+}
+
+header ul li {
+    display: inline-block;
+    padding: 0 40px;
+    cursor:pointer;
+
+    
+}
+
+/* BOTAO CADASTRO */
+
+header .espaco_cadastro {
+    display: flex;
+    justify-content: center;
+    width: var(--tamanho_cantos_header);
+}
+
+header .botao_cadastro{
+    display: inline-flex;
+    padding: 0.7rem 2rem;
+}   
